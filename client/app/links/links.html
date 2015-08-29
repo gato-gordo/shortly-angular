@@ -1,3 +1,13 @@
-<div id='container'>
+
+<div id='container' ng-controller="LinksController">
   <!-- Your html here -->
+  <p>Search:</p>
+  <input type="search" ng-model="toFind">
+  <ul>
+    <li class="link"ng-repeat="link in data | orderBy: 'visits' | filter: toFind">
+      <a target="_blank" href="/api/links/{{link.code}}"> {{ link.title }}
+        <p class="visits count">{{link.visits}}</p>
+      </a>
+    </li>
+  </ul>
 </div>
